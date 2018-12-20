@@ -18,7 +18,7 @@ class LoginContainer extends Component {
   };
 
   handleSubmit = (event) => {
-    event.prevenDefault();
+    event.preventDefault();
     console.log(this.state);
   };
 
