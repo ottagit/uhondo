@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader/root';
+//import { hot } from 'react-hot-loader/root';
 import './App.css';
 import LoginContainer from './LoginContainer';
 
@@ -14,4 +14,4 @@ class App extends Component {
   }
 }
 
-export default hot(App);
+export default App;
