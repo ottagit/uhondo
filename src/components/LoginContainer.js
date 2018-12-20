@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 class LoginContainer extends Component {
 
@@ -24,10 +25,7 @@ class LoginContainer extends Component {
   render() {
     return (
       <div id="LoginContainer" className="inner-container">
-        <div id="Header">
-          <img src="/assets/logo.png" alt="Logo" />
-          <h1>Uhondo</h1>
-        </div>
+        <Header />
         <form onSubmit={this.handleSubmit}>
           <p>Enter email and password to Sign in or Sign up</p>
           <input
