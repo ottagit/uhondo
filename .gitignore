@@ -22,4 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# firebase project console secrets
 /public/secrets.js
+
+# firebase deploy
+/.firebase
+/functions
