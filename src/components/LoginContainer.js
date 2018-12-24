@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../sections/Header';
-import firebase from '../firebase.js';
+import firebase from '../firebase';
 
 class LoginContainer extends Component {
 
@@ -17,7 +17,7 @@ class LoginContainer extends Component {
       password: event.target.value
     });
   };
-  
+ 
   onLogin() {
     this.props.history.push('/');
   }

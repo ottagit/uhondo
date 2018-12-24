@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import { hot } from 'react-hot-loader/root';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import './App.css';
 import LoginContainer from './LoginContainer';
 import ChatContainer from './ChatContainer';
@@ -13,6 +13,9 @@ class App extends Component {
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
         this.setState({ user });
+      }
+      else {
+        this.props.history.push('/login');
       }
     });
   }
@@ -27,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default hot(App);
+export default hot(withRouter(App));
