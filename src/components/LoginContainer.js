@@ -17,12 +17,16 @@ class LoginContainer extends Component {
       password: event.target.value
     });
   };
+  
+  onLogin() {
+    this.props.history.push('/');
+  }
 
   login() {
     // Login user
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).
       then(res => {
-        console.log(res);
+        this.onLogin();
       }).
       catch(err => {
         if (err.code === 'auth/user-not-found') {
@@ -38,7 +42,7 @@ class LoginContainer extends Component {
     // Sign up user
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).
       then(res => { 
-        console.log(res);
+        this.onLogin();
       }).
       catch(err => {
         console.log(err);
