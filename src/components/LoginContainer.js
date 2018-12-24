@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Header from '../sections/Header';
 import firebase from '../firebase.js';
 
 class LoginContainer extends Component {
