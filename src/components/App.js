@@ -21,11 +21,19 @@ class App extends Component {
     });
   }
 
+  handleSubmitMessage = msg => {
+    // Send message to firebase 
+    console.log(msg);
+  };
+
   render() {
     return (
       <div id="container" className="inner-container">
         <Route path='/login' component={LoginContainer} />
-        <Route exact path='/' component={ChatContainer} />
+        <Route
+          exact path='/'
+          render={ () => <ChatContainer onSubmit={this.handleSubmitMessage} />}
+        />
         <Route path='/users/:id' component={UserContainer} />
       </div>
     );
