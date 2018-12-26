@@ -23,7 +23,17 @@ class App extends Component {
 
   handleSubmitMessage = msg => {
     // Send message to firebase 
-    console.log(msg);
+    const data = {
+      msg,
+      author: this.state.user.email,
+      user_id: this.state.user.uid,
+      timestamp: Date.now()
+    };
+
+    firebase.
+      database().
+      ref('/messages').
+      push(data);
   };
 
   render() {
