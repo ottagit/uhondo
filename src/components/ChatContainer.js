@@ -39,7 +39,10 @@ class ChatContainer extends Component {
         <div id="message-container">
           {
             this.props.messages.map(msg => (
-              <div key={msg.key} className="message">
+              <div
+                key={msg.key} className="message"
+                className={`message ${ this.props.user.email === msg.author && 'mine' }`}
+              >
                 <p>{msg.msg}</p>
                 <p className="author">
                   <Link to={`/users/${msg.user_id}`}>{msg.author}</Link>
