@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 import Header from '../sections/Header';
 
@@ -36,6 +37,16 @@ class ChatContainer extends Component {
         </Header>
 
         <div id="message-container">
+          {
+            this.props.messages.map(msg => (
+              <div key={msg.key} className="message">
+                <p>{msg.msg}</p>
+                <p className="author">
+                  <Link to={`/users/${msg.user_id}`}>{msg.author}</Link>
+                </p>
+              </div>
+            ))
+          }
         </div>
 
         <div id="chat-input">
