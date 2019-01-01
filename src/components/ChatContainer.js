@@ -29,6 +29,17 @@ class ChatContainer extends Component {
     firebase.auth().signOut();
   };
 
+  getAuthor = (msg, nextMsg) => {
+    if (!nextMsg || nextMsg.author !== msg.author) {
+      return (
+        <p className="author">
+          <Link to={`/users/${msg.user_id}`}>{msg.author}</Link>
+        </p>
+      );
+    }
+  };
+      
+
   render() {
     return (
       <div id="ChatContainer" className="inner-container">
@@ -38,15 +49,13 @@ class ChatContainer extends Component {
 
         <div id="message-container">
           {
-            this.props.messages.map(msg => (
+            this.props.messages.map((msg, i) => (
               <div
                 key={msg.key} className="message"
                 className={`message ${ this.props.user.email === msg.author && 'mine' }`}
               >
                 <p>{msg.msg}</p>
-                <p className="author">
-                  <Link to={`/users/${msg.user_id}`}>{msg.author}</Link>
-                </p>
+                {this.getAuthor(msg, this.props.messages[i + 1])}
               </div>
             ))
           }
