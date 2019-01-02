@@ -63,23 +63,30 @@ class ChatContainer extends Component {
         <Header> 
           <button className="red" onClick={this.handleLogout} >Logout</button>
         </Header>
-
-        <div 
-          id="message-container"
-          ref={element => this.messageContainer = element }
-        >
-          {
-            this.props.messages.map((msg, i) => (
-              <div
-                key={msg.key} className="message"
-                className={`message ${ this.props.user.email === msg.author && 'mine' }`}
-              >
-                <p>{msg.msg}</p>
-                {this.getAuthor(msg, this.props.messages[i + 1])}
-              </div>
-            ))
-          }
-        </div>
+        { this.props.messagesLoaded ? (
+          <div 
+            id="message-container"
+            ref={element => this.messageContainer = element }
+          >
+            {
+              this.props.messages.map((msg, i) => (
+                <div
+                  key={msg.key} className="message"
+                  className={`message ${ this.props.user.email === msg.author && 'mine' }`}
+                >
+                  <p>{msg.msg}</p>
+                  {this.getAuthor(msg, this.props.messages[i + 1])}
+                </div>
+              ))
+            }
+          </div>
+        ) : 
+        (
+          <div id="loading-container">
+            <img src="/assets/logo.svg" alt="Logo" id="loader" />
+          </div>
+        )
+        }
 
         <div id="chat-input">
           <textarea 
